@@ -1,0 +1,44 @@
+hours = input("Enter hours worked: ")
+rate = input("Enter the rate of pay: ")
+
+#Trying to see if hours is a numerical value
+try:
+    hours = int(hours)
+
+except:
+    hours = -1
+    
+#Trying to see if rate is a numerical value
+try:
+    rate = float(rate)
+
+except:
+    rate = -1
+
+#Runs if statements to see if both values are wrong or if one alone is wrong
+if hours == -1 and rate == -1:
+    print("Hours and Rate needs to be in numerical values ")
+
+elif rate == -1:
+    print("Rate needs to be a numerical value")
+
+elif hours == -1:
+    print("Hours needs to be a numerical value")
+
+#If both values are numerical, the salary can now be worked out
+else:
+
+    # Person that has worked less or equal to 40 hours gets standard rate for payment calculation
+    if hours <= 40:
+        salary = hours * rate
+
+    #Person that worked more that 40 hours gets payed 1.5 times more for every hour over 40 hours
+    elif hours > 40:
+        exhours = hours - 40
+        exrate = rate * 1.5
+
+        #hours overtime gets multiplied by the overtime
+        bonus = exhours * exrate
+        salary = (40 * rate) + bonus
+
+    print("Your salary is: $" , salary)
